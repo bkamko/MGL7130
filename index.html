@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <style>
+      #map_wrapper {
+        height: 400px;
+      }
+
+      #map_canvas {
+          width: 100%;
+          height: 100%;
+      }
+
+      .scroll {
+        height: 100%;
+      }
+    </style>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <script src="js/index.js"></script>
+
+    <!-- Google JavaScript API -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  </head>
+  <body ng-app="MenuNav">
+
+    <ion-nav-view></ion-nav-view>
+
+    <!-- Menu -->
+
+    <script type="text/ng-template" id="menu.html">
+      <ion-side-menus>
+
+        <ion-side-menu-content>
+          <!-- Back button -->
+          <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+          </ion-nav-bar>
+
+          <ion-nav-view name="sideNenuContent" animation="slide-left-right"></ion-nav-view>
+        </ion-side-menu-content>
+
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-positive">
+            <h1 class="title">Menu</h1>
+          </ion-header-bar>
+          <ion-content scroll="false">
+            <ion-list>
+              <ion-item nav-clear menu-close href="{{navigation.page1.direction}}">{{navigation.page1.title}}</ion-item>
+              <ion-item nav-clear menu-close href="{{navigation.page2.direction}}">{{navigation.page2.title}}</ion-item>
+              <ion-item nav-clear menu-close href="{{navigation.page3.direction}}">{{navigation.page3.title}}</ion-item>
+            </ion-list>   
+          </ion-content>
+        </ion-side-menu>
+
+      </ion-side-menus>
+    </script>
+
+    <!-- Page 1 -->
+
+    <script type="text/ng-template" id="home.html">
+      <ion-view title="{{navigation.page1.title}}">
+
+        <!-- Navigation button -->
+        <ion-nav-buttons side="left">
+          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+          <!--  button-icon icon icon-right ion-arrow-right-c -->
+          <button class="button button-clear button-positive" ui-sref="{{navigation.pageHeaderRight.direction}}">{{navigation.pageHeaderRight.title}} &nbsp;</button>
+        </ion-nav-buttons>
+
+        <ion-content scroll="false" data-tap-disabled="true">
+
+          <!-- Google Map -->
+          <div id="map_wrapper" style="box-shadow: 0px 1px 0px #b4b4b4;">
+            <div id="map_canvas"></div>
+          </div>
+
+          <!-- Event information -->
+          <div ng-if="eventSelected.name" 
+            class="padding" 
+            style="text-align: center; font-size: 1.2em">
+            <p style="box-shadow: 0px 1px 0px #b4b4b4;">
+              <i class="icon ion-home"></i>
+              {{eventSelected.name}}
+            </p>
+
+            <p ng-bind-html="eventSelected.desc"></p>
+
+            <button class="button button-block button-positive">
+              Join the party
+            </button>
+          </div>
+
+        </ion-content>
+
+      </ion-view>
+    </script>
+
+    <script type="text/javascript">
+      google.maps.event.addDomListener(window, "load", initialize);
+    </script>
+
+    <!-- Page 2 -->
+
+    <script type="text/ng-template" id="other.html">
+      <ion-view title="{{navigation.page2.title}}">
+        <ion-nav-buttons side="left">
+          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+        <ion-content class="has-header">
+          Other nested view.
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <!-- Page 3 -->
+
+    <script type="text/ng-template" id="filter.html">
+      <ion-view title="{{navigation.pageHeaderRight.title}}">
+        <ion-content>
+          Another nested view.
+        </ion-content>
+      </ion-view>
+    </script>
+  </body>
+</html>

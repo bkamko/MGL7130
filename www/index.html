@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
     <title>Welcome</title>
 
 
@@ -75,15 +75,17 @@
             class="padding" 
             style="text-align: center; font-size: 1.2em">
             <p style="box-shadow: 0px 1px 0px #b4b4b4;">
-              <i class="icon ion-home"></i>
-              {{eventSelected.name}}
+            <button class="button button-assertive button-small" ng-click="addtoFavoris()" style="text-align: center">
+               Favoris  <i class="icon ion-ios-heart-outline"></i>
+              </button>
+              <b> {{eventSelected.name}} </b>
+              {{eventSelected.afterName}}
+              <button class="button button-assertive button-small" ng-click="openDetails()" style="text-align: center">
+                 Détails  <i class="icon ion-arrow-right-a"></i>
+              </button>
             </p>
 
             <p ng-bind-html="eventSelected.desc"></p>
-
-            <button class="button button-block button-positive">
-              Join the party
-            </button>
           </div>
 
         </ion-content>

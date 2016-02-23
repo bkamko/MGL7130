@@ -2,7 +2,7 @@ var angularApp = angular.module('MenuNav', ['ionic']);
 var angularScope;
 //Objet evenemnt pour tester les descriptifs :
 var evenement = new Object();
- evenement.titre ="Old help";
+ evenement.titre ="Old help cause for student";
  evenement.ID = "236554";
  evenement.latlng = "45.514887, -73.559727";
  evenement.organisme ="UQAM";
@@ -19,7 +19,7 @@ var evenement = new Object();
  evenement.periodicity = "mensuel";
  evenement.contact = "contact@UQAM.ca";
  evenement.acces = "Metro place des arts";
- evenement.descriptif ="Un evenement pour aider les personnes agee a faire les papiers ainsi que leurs courses";
+ evenement.descriptif ="Un evenement pour aider les personnes agee a faire les papiers ainsi que leurs courses bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla";
  evenement.accessibleToDisabled = true;
  evenement.inscred = false;
  evenement.favored = false;

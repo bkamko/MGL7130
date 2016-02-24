@@ -2,6 +2,8 @@
 
 ## Configuration de l'environnement de travail avec Ionic, Git et Github
 
+Installer une ligne de commande Git sous Windows : https://git-for-windows.github.io/
+
 Placez-vous dans un repertoire de travail puis entrez les commandes suivantes :
 
 $ ionic start Simplyk blank
@@ -9,8 +11,6 @@ $ ionic start Simplyk blank
 A la question de la création d'un compte ionic.io répondez non. Vous pouvez le faire plus tard si vous voulez.
 
 $ cd Simplyk
-
-$ cd www
 
 $ git init .
 

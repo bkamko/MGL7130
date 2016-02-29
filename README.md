@@ -2,6 +2,8 @@
 
 ## Configuration de l'environnement de travail avec Ionic, Git et Github
 
+Installer une ligne de commande Git sous Windows : https://git-for-windows.github.io/
+
 Placez-vous dans un repertoire de travail puis entrez les commandes suivantes :
 
 $ ionic start Simplyk blank
@@ -10,13 +12,9 @@ A la question de la création d'un compte ionic.io répondez non. Vous pouvez le
 
 $ cd Simplyk
 
-$ cd www
-
 $ git init .
 
-$ git remote add -t \* -f origin https://github.com/Warlot-PQ/MGL7130.git
-
-$ rm -Rf css/ img/ js/ index.html
+$ git remote add -t \\* -f origin https://github.com/Warlot-PQ/MGL7130.git
 
 $ git checkout master
 
@@ -61,3 +59,16 @@ $ ionic upload
 Utilisez l'application mobile Ionic View pour visualier l'application Ionic.
 
 
+## Déploiement sur téléphone par PhoneGap
+
+Identifiez-vous sur https://build.phonegap.com/ avec votre Adobe ID.
+
+Faites un zip du projet au complet et envoyez le sur le site phonegap. Lancez la compilation, scanner le QR code et c'est prêt.
+
+Référence : http://pointdeveloper.com/how-to-build-ionic-app-with-phonegap-build/
+
+## Splashscreen sur iPhone 5
+
+Ajoutez la balise suivante au fichier config.xml sur répertoire www. Default-568h@2x.png contient le splashscreen.
+
+<gap:splash src="Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />

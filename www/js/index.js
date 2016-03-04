@@ -1,3 +1,5 @@
+angular.module('starter', ['ionic', 'ngCordova']);
+
 var angularApp = angular.module('MenuNav', ['ionic']);
 var angularScope;
 //Objet evenemnt pour tester les descriptifs :
@@ -19,12 +21,10 @@ var evenement = new Object();
  evenement.periodicity = "mensuel";
  evenement.contact = "contact@UQAM.ca";
  evenement.acces = "Metro place des arts";
- evenement.descriptif ="Un evenement pour aider les personnes agee a faire les papiers ainsi que leurs courses bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla";
+ evenement.descriptif ="Un evenement pour aider les personnes agées à faire les papiers ainsi que leurs courses blabla blabla";
  evenement.accessibleToDisabled = true;
  evenement.inscred = false;
  evenement.favored = false;
-
-
 
 angularApp.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider.state('home', {
@@ -47,7 +47,7 @@ angularApp.controller("AppCtrl", function($scope, $ionicHistory){
 
 	angularScope.navigation = {
 		page1: {
-			title: 'Volunteer Seeker Map',
+			title: 'Symplik Map',
 			direction: "/home"
 		},
 		pageHeaderRight: {
@@ -57,8 +57,10 @@ angularApp.controller("AppCtrl", function($scope, $ionicHistory){
 
 	angularScope.goBack = function(){
 		$ionicHistory.goBack();
-	}
+	};
 
+	var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYX';
+	var labelIndex = 0;
 	function initialize() {
 		var mapOptions = {
 			zoom: 10,
@@ -67,10 +69,13 @@ angularApp.controller("AppCtrl", function($scope, $ionicHistory){
 		};
 
 		var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
 		var markers = [
 			['Old help, 23/02/16 10:00 PM', 45.514887, -73.559727, 4],
-			['Other Event, 00/00/00 00:00 PM', 45.52243499999999, -73.60211099999998],
+			['Other Event, 21/02/16 15:00 PM', 45.522434, -73.602112],
+			['Old help, 25/02/16 09:00 PM', 45.623736, -73.769054],
+			['New Event, 27/02/16 11:00 PM', 45.536887, -73.559727],
+			['Old help, 29/02/16 14:00 PM', 45.568887, -73.559727],
+			['New help, 05/03/16 08:00 PM', 45.557678, -73.864627]
 		];
 
 		// Info windows displayed above each markers
@@ -78,10 +83,20 @@ angularApp.controller("AppCtrl", function($scope, $ionicHistory){
 
 		// Loop through the array of markers and place each one on the map 
 		for(i = 0; i < markers.length; i += 1) {
+		
 			marker = new google.maps.Marker({
+				icon: {
+                	path: google.maps.SymbolPath.CIRCLE,
+			        scale: 11,
+			        fillColor: "#F00",
+			        fillOpacity: 0.8,
+			        strokeWeight: 0.8
+			    },
 				position: new google.maps.LatLng(markers[i][1], markers[i][2]),
-				map: map
+				label: labels[labelIndex++ % labels.length],
+				map: map,
 			});
+		
 
 			// Add click action on each marcker
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {

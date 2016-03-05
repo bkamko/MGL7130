@@ -59,8 +59,6 @@ angularApp.controller("AppCtrl", function($scope, $ionicHistory){
 		$ionicHistory.goBack();
 	};
 
-	var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYX';
-	var labelIndex = 0;
 	function initialize() {
 		var mapOptions = {
 			zoom: 10,
@@ -84,17 +82,20 @@ angularApp.controller("AppCtrl", function($scope, $ionicHistory){
 		// Loop through the array of markers and place each one on the map 
 		for(i = 0; i < markers.length; i += 1) {
 		
-			marker = new google.maps.Marker({
-				icon: {
-                	path: google.maps.SymbolPath.CIRCLE,
-			        scale: 11,
-			        fillColor: "#F00",
-			        fillOpacity: 0.8,
-			        strokeWeight: 0.8
-			    },
-				position: new google.maps.LatLng(markers[i][1], markers[i][2]),
-				label: labels[labelIndex++ % labels.length],
-				map: map,
+			var marker = new MarkerWithLabel({
+					position: new google.maps.LatLng(markers[i][1], markers[i][2]),
+					map: map,
+					labelContent: "21-02",
+					labelAnchor: new google.maps.Point(13, 10),
+				    labelClass: "labels", // the CSS class for the label
+				    labelInBackground: false,
+					icon: {
+	                	path: google.maps.SymbolPath.CIRCLE,
+				        scale: 16,
+				        fillColor: "#FF0000",
+				        fillOpacity: 1,
+				        strokeWeight: 0.8
+				    },					
 			});
 		
 
